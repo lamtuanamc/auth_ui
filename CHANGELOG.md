@@ -4,6 +4,19 @@ All notable changes to `auth_ui` are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.2]
+
+### Fixed
+- Enabled web platform for the `example/` Widgetbook app (`flutter create
+  . --platforms=web`); without this, `flutter run -d chrome` aborted with
+  "This application is not configured to build on the web".
+- Removed deprecated `DeviceFrameAddon` from the Widgetbook root — the
+  addon hard-references a `Device` type that no longer compiles and is
+  scheduled for removal upstream.
+- Added direct `flutter_svg` dependency to `example/` (was only
+  transitive via `auth_ui`, tripped the `depend_on_referenced_packages`
+  lint).
+
 ## [0.1.1]
 
 ### Added

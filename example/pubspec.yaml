@@ -17,6 +17,7 @@ dependencies:
     path: ..
 
   widgetbook: ^3.11.1
+  flutter_svg: ^2.0.10
 
 dev_dependencies:
   flutter_test:

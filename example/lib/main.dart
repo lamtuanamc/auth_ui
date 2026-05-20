@@ -57,14 +57,6 @@ class AuthUiWidgetbook extends StatelessWidget {
           themeBuilder: (context, theme, child) =>
               Theme(data: theme, child: child),
         ),
-        DeviceFrameAddon(
-          devices: <Device>[
-            Devices.ios.iPhone13,
-            Devices.ios.iPhoneSE,
-            Devices.ios.iPadPro11Inches,
-            Devices.android.samsungGalaxyS20,
-          ],
-        ),
         TextScaleAddon(min: 1.0, max: 1.5),
       ],
     );
