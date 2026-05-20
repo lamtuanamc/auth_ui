@@ -8,7 +8,7 @@ const AuthAssets _assets = AuthAssets.bundled;
 
 Widget _scaffold(BuildContext context, Widget child) {
   return Scaffold(
-    backgroundColor: AuthTheme.of(context).colors.backgroundGradientEnd,
+    backgroundColor: Colors.white,
     body: SafeArea(child: Padding(padding: const EdgeInsets.all(16), child: child)),
   );
 }

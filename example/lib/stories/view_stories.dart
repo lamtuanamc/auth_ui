@@ -86,6 +86,11 @@ const AuthStrings _strings = AuthStrings(
 
 const AuthAssets _assets = AuthAssets.bundled;
 
+/// Plain white background applied to every LoginView story so the visual
+/// catalog stays consistent with the other views (which already default
+/// to white Scaffolds).
+const Decoration _whiteBg = BoxDecoration(color: Colors.white);
+
 // ---------------------------------------------------------------------------
 // LoginView
 // ---------------------------------------------------------------------------
@@ -99,6 +104,7 @@ Widget loginViewAllStory(BuildContext context) {
     onGooglePressed: () {},
     onApplePressed: () {},
     onPancakeIdLinkPressed: () {},
+    background: _whiteBg,
   );
 }
 
@@ -110,6 +116,7 @@ Widget loginViewNoAppleStory(BuildContext context) {
     onFacebookPressed: () {},
     onGooglePressed: () {},
     showAppleButton: false,
+    background: _whiteBg,
   );
 }
 
@@ -121,6 +128,7 @@ Widget loginViewLoadingPancakeStory(BuildContext context) {
     loadingPancakeId: true,
     onFacebookPressed: () {},
     onGooglePressed: () {},
+    background: _whiteBg,
   );
 }
 
@@ -132,6 +140,7 @@ Widget loginViewCustomLogoStory(BuildContext context) {
     onFacebookPressed: () {},
     onGooglePressed: () {},
     logo: const FlutterLogo(size: 48),
+    background: _whiteBg,
   );
 }
 
@@ -142,13 +151,7 @@ Widget loginViewImageBgStory(BuildContext context) {
     onPancakeIdPressed: () {},
     onFacebookPressed: () {},
     onGooglePressed: () {},
-    background: const BoxDecoration(
-      gradient: LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors: [Color(0xFFFFE0F0), Color(0xFFE0F7FF)],
-      ),
-    ),
+    background: _whiteBg,
   );
 }
 
