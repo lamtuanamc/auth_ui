@@ -4,6 +4,13 @@ All notable changes to `auth_ui` are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1]
+
+### Added
+- `example/` Widgetbook app with 27 stories covering every token, atom,
+  and view. Includes a custom-magenta theme story and device-frame +
+  text-scale addons. Run with `cd example && flutter run`.
+
 ## [0.1.0]
 
 Initial public release. Phase 1 + 2 + 3 of the planned rollout.

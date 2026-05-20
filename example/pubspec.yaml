@@ -1,0 +1,27 @@
+name: auth_ui_widgetbook
+description: Local Widgetbook app that previews every widget and view in the auth_ui package across states, themes, and locales.
+publish_to: none
+version: 0.1.0
+
+environment:
+  sdk: '>=3.7.0-0 <4.0.0'
+  flutter: '>=3.27.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Path dependency so changes to the package are picked up immediately
+  # without re-publishing.
+  auth_ui:
+    path: ..
+
+  widgetbook: ^3.11.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true

@@ -1,6 +1,6 @@
 name: auth_ui
 description: Pure UI components for authentication flows (login, register, OTP, forgot/reset password). Brand-agnostic, dependency-light, designed for cross-product reuse.
-version: 0.1.0
+version: 0.1.1
 homepage:
 publish_to: none
 
