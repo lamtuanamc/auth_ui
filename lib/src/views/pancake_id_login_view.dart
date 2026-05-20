@@ -322,32 +322,34 @@ class PancakeIdLoginView extends StatelessWidget {
           ? body
           : DecoratedBox(decoration: background!, child: body),
       bottomNavigationBar: (showRegisterPrompt && onSignUp != null)
-          ? BottomAppBar(
+          ? Material(
               color: background != null
                   ? Colors.transparent
                   : (backgroundColor ?? Colors.white),
-              shadowColor: Colors.transparent,
-              child: Padding(
-                padding: bottomBarPadding ?? const EdgeInsets.all(16),
-                child: InkWell(
-                  onTap: onSignUp,
-                  child: SizedBox(
-                    height: 40,
-                    child: Center(
-                      child: RichText(
-                        text: TextSpan(
-                          style: typography.bodyMedium.copyWith(color: colors.textSecondary),
-                          children: [
-                            TextSpan(text: strings.noAccountPrompt),
-                            TextSpan(
-                              text: strings.registerNowAction,
-                              style: typography.linkSecondary.copyWith(color: colors.accent),
-                            ),
-                            const WidgetSpan(child: SizedBox(width: 4)),
-                            WidgetSpan(
-                              child: Icon(Icons.arrow_forward, size: 16, color: colors.accent),
-                            ),
-                          ],
+              child: SafeArea(
+                top: false,
+                child: Padding(
+                  padding: bottomBarPadding ?? const EdgeInsets.all(16),
+                  child: InkWell(
+                    onTap: onSignUp,
+                    child: SizedBox(
+                      height: 40,
+                      child: Center(
+                        child: RichText(
+                          text: TextSpan(
+                            style: typography.bodyMedium.copyWith(color: colors.textSecondary),
+                            children: [
+                              TextSpan(text: strings.noAccountPrompt),
+                              TextSpan(
+                                text: strings.registerNowAction,
+                                style: typography.linkSecondary.copyWith(color: colors.accent),
+                              ),
+                              const WidgetSpan(child: SizedBox(width: 4)),
+                              WidgetSpan(
+                                child: Icon(Icons.arrow_forward, size: 16, color: colors.accent),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),

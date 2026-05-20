@@ -278,55 +278,57 @@ class OtpView extends StatelessWidget {
       backgroundColor: background != null ? Colors.transparent : (backgroundColor ?? Colors.white),
       appBar: AuthAppBar(onClose: onClose),
       body: background == null ? body : DecoratedBox(decoration: background!, child: body),
-      bottomNavigationBar: BottomAppBar(
+      bottomNavigationBar: Material(
         color: background != null ? Colors.transparent : (backgroundColor ?? Colors.white),
-        shadowColor: Colors.transparent,
-        child: Padding(
-          padding: bottomBarPadding ?? const EdgeInsets.all(16),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              if (remaining > Duration.zero)
-                Text(
-                  _formatRemaining(remaining),
-                  style: timerStyle ??
-                      typography.title.copyWith(
-                        fontSize: 18,
-                        color: colors.textStrong,
-                        height: 1.56,
-                      ),
-                ),
-              const SizedBox(height: 6),
-              Row(
-                children: [
+        child: SafeArea(
+          top: false,
+          child: Padding(
+            padding: bottomBarPadding ?? const EdgeInsets.all(16),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (remaining > Duration.zero)
                   Text(
-                    strings.cantReceive,
-                    style:
-                        cantReceiveStyle ?? typography.subtitle.copyWith(color: colors.textSecondary),
+                    _formatRemaining(remaining),
+                    style: timerStyle ??
+                        typography.title.copyWith(
+                          fontSize: 18,
+                          color: colors.textStrong,
+                          height: 1.56,
+                        ),
                   ),
-                  const SizedBox(width: 6),
-                  InkWell(
-                    onTap: resolvedCanResend ? onResend : null,
-                    child: Text(
-                      strings.resendAction,
-                      style: resolvedCanResend
-                          ? (resendStyle ??
-                              typography.linkSecondary.copyWith(color: colors.accent))
-                          : (disabledResendStyle ??
-                              typography.linkSecondary.copyWith(color: colors.textTertiary)),
+                const SizedBox(height: 6),
+                Row(
+                  children: [
+                    Text(
+                      strings.cantReceive,
+                      style: cantReceiveStyle ??
+                          typography.subtitle.copyWith(color: colors.textSecondary),
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 12),
-              AuthPrimaryButton(
-                label: strings.continueButton,
-                onPressed: code.length == length ? onSubmit : null,
-                enabled: code.length == length,
-                loading: submitLoading,
-              ),
-            ],
+                    const SizedBox(width: 6),
+                    InkWell(
+                      onTap: resolvedCanResend ? onResend : null,
+                      child: Text(
+                        strings.resendAction,
+                        style: resolvedCanResend
+                            ? (resendStyle ??
+                                typography.linkSecondary.copyWith(color: colors.accent))
+                            : (disabledResendStyle ??
+                                typography.linkSecondary.copyWith(color: colors.textTertiary)),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                AuthPrimaryButton(
+                  label: strings.continueButton,
+                  onPressed: code.length == length ? onSubmit : null,
+                  enabled: code.length == length,
+                  loading: submitLoading,
+                ),
+              ],
+            ),
           ),
         ),
       ),

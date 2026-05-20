@@ -193,13 +193,22 @@ class _CloseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: radius,
-      child: Container(
-        decoration: BoxDecoration(color: backgroundColor, borderRadius: radius),
-        padding: padding,
-        child: Icon(icon, size: iconSize, color: iconColor),
+    // Compute a guaranteed-square footprint so NavigationToolbar's leading
+    // slot doesn't stretch the chip horizontally. The padding contributes
+    // on both axes; we honor it but still pin to a square box.
+    final EdgeInsets resolved = padding.resolve(Directionality.maybeOf(context));
+    final double side = iconSize + resolved.horizontal;
+    return Material(
+      color: backgroundColor,
+      shape: RoundedRectangleBorder(borderRadius: radius),
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: onTap,
+        child: SizedBox(
+          width: side,
+          height: side,
+          child: Center(child: Icon(icon, size: iconSize, color: iconColor)),
+        ),
       ),
     );
   }

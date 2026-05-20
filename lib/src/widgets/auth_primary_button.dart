@@ -69,7 +69,9 @@ class AuthPrimaryButton extends StatelessWidget {
   /// Visual state stays "enabled" — only the label changes.
   final bool loading;
 
-  /// Total button height. Defaults to `theme.spacing.buttonHeight` (48).
+  /// Total button height. Defaults to `theme.spacing.primaryButtonHeight`
+  /// (52) so the CTA has stronger visual weight than secondary social
+  /// buttons (which default to `theme.spacing.buttonHeight`, 48).
   final double? height;
 
   /// Total button width. Defaults to `double.infinity` (full-bleed).
@@ -132,7 +134,7 @@ class AuthPrimaryButton extends StatelessWidget {
         : (disabledForegroundColor ?? colors.primaryButtonDisabledForeground);
 
     final BorderRadius radius = borderRadius ?? BorderRadius.circular(spacing.buttonRadius);
-    final double resolvedHeight = height ?? spacing.buttonHeight;
+    final double resolvedHeight = height ?? spacing.primaryButtonHeight;
     final EdgeInsetsGeometry resolvedPadding = padding ?? EdgeInsets.zero;
 
     final BorderSide resolvedBorder = border ??

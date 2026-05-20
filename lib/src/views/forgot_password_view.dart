@@ -189,16 +189,18 @@ class ForgotPasswordView extends StatelessWidget {
       backgroundColor: background != null ? Colors.transparent : (backgroundColor ?? Colors.white),
       appBar: AuthAppBar(onClose: onClose),
       body: background == null ? body : DecoratedBox(decoration: background!, child: body),
-      bottomNavigationBar: BottomAppBar(
+      bottomNavigationBar: Material(
         color: background != null ? Colors.transparent : (backgroundColor ?? Colors.white),
-        shadowColor: Colors.transparent,
-        child: Padding(
-          padding: bottomBarPadding ?? const EdgeInsets.all(16),
-          child: AuthPrimaryButton(
-            label: strings.continueButton,
-            onPressed: canSubmit ? onSubmit : null,
-            enabled: canSubmit,
-            loading: submitLoading,
+        child: SafeArea(
+          top: false,
+          child: Padding(
+            padding: bottomBarPadding ?? const EdgeInsets.all(16),
+            child: AuthPrimaryButton(
+              label: strings.continueButton,
+              onPressed: canSubmit ? onSubmit : null,
+              enabled: canSubmit,
+              loading: submitLoading,
+            ),
           ),
         ),
       ),
