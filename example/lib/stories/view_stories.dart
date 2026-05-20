@@ -229,6 +229,20 @@ Widget otpResendReadyStory(BuildContext context) {
   );
 }
 
+Widget otpInvalidStory(BuildContext context) {
+  return OtpView(
+    strings: _strings.otp,
+    destination: '+84 *** *** 123',
+    code: '1234',
+    errorText: 'Mã OTP không đúng. Vui lòng thử lại.',
+    onChanged: (_) {},
+    onCompleted: (_) {},
+    onSubmit: () {},
+    onResend: () {},
+    onClose: () {},
+  );
+}
+
 // ---------------------------------------------------------------------------
 // RegisterView
 // ---------------------------------------------------------------------------

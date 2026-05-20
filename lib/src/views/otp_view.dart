@@ -57,6 +57,7 @@ class OtpView extends StatelessWidget {
     this.canResend,
     this.submitLoading = false,
     this.errorStream,
+    this.errorText,
     this.autofocus = true,
     // Visual overrides
     this.backgroundColor,
@@ -132,6 +133,11 @@ class OtpView extends StatelessWidget {
   /// (e.g. `ErrorAnimationType.shake`) when a verification request
   /// fails.
   final Stream<ErrorAnimationType>? errorStream;
+
+  /// Inline error message rendered under the pin boxes. When set and
+  /// non-empty, the pin boxes also switch their border to the error
+  /// tint. Pass `null` or empty to hide.
+  final String? errorText;
 
   /// Whether the input requests focus on mount.
   final bool autofocus;
@@ -210,6 +216,7 @@ class OtpView extends StatelessWidget {
     final String renderedSubtitle =
         strings.subtitleTemplate.replaceAll('{destination}', destination);
     final bool resolvedCanResend = canResend ?? (remaining == Duration.zero);
+    final bool hasError = errorText != null && errorText!.isNotEmpty;
 
     final Widget body = SingleChildScrollView(
       child: Padding(
@@ -258,9 +265,15 @@ class OtpView extends StatelessWidget {
                 borderWidth: 1,
                 fieldOuterPadding:
                     pinFieldOuterPadding ?? const EdgeInsets.symmetric(horizontal: 6),
-                activeColor: pinFieldActiveBorder ?? colors.stroke,
-                inactiveColor: pinFieldInactiveBorder ?? colors.stroke,
-                selectedColor: pinFieldFocusedBorder ?? colors.accent,
+                activeColor: hasError
+                    ? colors.error
+                    : (pinFieldActiveBorder ?? colors.stroke),
+                inactiveColor: hasError
+                    ? colors.error
+                    : (pinFieldInactiveBorder ?? colors.stroke),
+                selectedColor: hasError
+                    ? colors.error
+                    : (pinFieldFocusedBorder ?? colors.accent),
                 activeFillColor: colors.inputBackground,
                 inactiveFillColor: colors.inputBackground,
                 selectedFillColor: colors.inputBackground,
@@ -269,6 +282,17 @@ class OtpView extends StatelessWidget {
               onCompleted: onCompleted,
               beforeTextPaste: (_) => true,
             ),
+            if (hasError)
+              Padding(
+                padding: const EdgeInsets.only(top: 12, left: 16, right: 16),
+                child: Center(
+                  child: Text(
+                    errorText!,
+                    style: typography.errorText.copyWith(color: colors.error),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
           ],
         ),
       ),

@@ -4,6 +4,27 @@ All notable changes to `auth_ui` are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.3]
+
+### Added
+- `OtpView.errorText` — inline error rendered under the pin boxes. When
+  non-empty the pin boxes also switch to the error-tinted border so the
+  rejection is visible at a glance. Widgetbook ships a new
+  "Invalid code" story.
+
+### Fixed
+- `AuthAppBar` close button no longer renders as an oval — pinned to a
+  guaranteed-square footprint so NavigationToolbar's leading slot stops
+  stretching it.
+- `AuthPrimaryButton` default height bumped from `buttonHeight` (48) to
+  `primaryButtonHeight` (52) so the main CTA matches PancakeIdButton's
+  visual weight.
+- `OtpView`, `PancakeIdLoginView`, `RegisterView`, `ForgotPasswordView`,
+  and `ResetPasswordView` swap `BottomAppBar` for
+  `Material + SafeArea`. Material 3's `BottomAppBar` pinned the bar to
+  80 px; OTP's countdown + resend + button stack was clipping with
+  "BOTTOM OVERFLOWED BY 90 PIXELS".
+
 ## [0.1.2]
 
 ### Fixed

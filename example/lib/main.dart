@@ -155,6 +155,7 @@ class AuthUiWidgetbook extends StatelessWidget {
             useCases: <WidgetbookUseCase>[
               WidgetbookUseCase(name: 'Counting down', builder: otpCountingStory),
               WidgetbookUseCase(name: 'Resend ready', builder: otpResendReadyStory),
+              WidgetbookUseCase(name: 'Invalid code', builder: otpInvalidStory),
             ],
           ),
           WidgetbookComponent(
