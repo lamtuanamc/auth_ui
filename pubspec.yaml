@@ -1,0 +1,29 @@
+name: auth_ui
+description: Pure UI components for authentication flows (login, register, OTP, forgot/reset password). Brand-agnostic, dependency-light, designed for cross-product reuse.
+version: 0.1.0
+homepage:
+publish_to: none
+
+environment:
+  sdk: '>=3.7.0-0 <4.0.0'
+  flutter: '>=3.27.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # SVG rendering for logos and decorative graphics. Required by login assets.
+  flutter_svg: ^2.0.10
+
+  # Boxed OTP input used by `OtpView`. Pinned to the major used across
+  # Pancake projects today.
+  pin_code_fields: ^8.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  assets:
+    - lib/assets/login/
